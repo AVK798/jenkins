@@ -9,24 +9,34 @@
 //         }
 //     }
 
+
+
 pipeline {
-    agent {
-        node {
-            label 'Agent-1'
-        }
+
+    agent any
+
+    envinorment {
+
+        Name="AVK"
     }
-        stages {
-            stage ('Running on agent') {
-                steps {
-                    echo "Hello Sir"
-                }
+    stages {
+
+        stage("one") {
+
+            steps{
+                sh echo "${Name}"
             }
         }
+        stage ("two") {
 
+            envinorment {
 
- post {
-    always {
-        echo "Clean up the cache"
+                Age=18
+            }
+            steps {
+
+                sh echo "${age}"
+            }
+        }
     }
- }
 }
