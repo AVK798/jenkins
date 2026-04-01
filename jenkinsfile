@@ -18,17 +18,16 @@ pipeline {
         Name="AVK"
     }
     stages {
-        stage("one") {
+        stage('one') {
             steps{
                 sh "echo ${Name}"
             }
         }
-        stage("two") {
+        stage('two') {
             envinorment {
                 Age=18
             }
             steps {
-
                 sh "echo ${age}"
             }
         }
