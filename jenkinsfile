@@ -14,7 +14,7 @@
 pipeline {
 
     agent any
-    envinorment {
+    environment {
         Name="AVK"
     }
     stages {
@@ -24,7 +24,7 @@ pipeline {
             }
         }
         stage('two') {
-            envinorment {
+            environment {
                 Age=18
             }
             steps {
