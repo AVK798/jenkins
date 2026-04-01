@@ -20,14 +20,14 @@ pipeline {
     }
     options {
         // Timeout counter starts AFTER agent is allocated
-        timeout(time: 1, unit: 'Minutes')
+        timeout(time: 30, unit: 'SECONDS')
     }
     stages {
         stage('one') {
             steps{
                 sh "echo ${Name}"
                 
-                echo "env"
+                echo "printenv"
             }
         }
         stage('two') {
