@@ -22,10 +22,11 @@ pipeline {
                 }
             }
         }
-}
 
-post {
+
+ post {
     always {
         echo "Clean up the cache"
     }
+ }
 }
