@@ -22,7 +22,7 @@ pipeline {
         stage('one') {
             steps{
                 sh "echo ${Name}"
-                sh 'printenv'
+                
                 echo "env"
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 sh "echo ${age}"
-                sh "echo ${secret}"
+                /*sh "echo ${secret}"*/
             }
         }
     }
