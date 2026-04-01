@@ -16,7 +16,7 @@ pipeline {
     agent any
     environment {
         Name="AVK"
-        secret=credentials('ubuntu-ssh')
+        /*secret=credentials('ubuntu-ssh')*/
     }
     stages {
         stage('one') {
