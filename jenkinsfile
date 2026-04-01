@@ -28,7 +28,7 @@ pipeline {
             steps{
                 sh "echo ${Name}"
                 
-                echo "printenv"
+                sh "env"
             }
         }
         stage('two') {
