@@ -14,28 +14,22 @@
 pipeline {
 
     agent any
-
     envinorment {
-
         Name="AVK"
     }
     stages {
-
         stage("one") {
-
             steps{
-                sh echo "${Name}"
+                sh "echo ${Name}"
             }
         }
-        stage ("two") {
-
+        stage("two") {
             envinorment {
-
                 Age=18
             }
             steps {
 
-                sh echo "${age}"
+                sh "echo ${age}"
             }
         }
     }
