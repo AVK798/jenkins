@@ -16,11 +16,13 @@ pipeline {
     agent any
     environment {
         Name="AVK"
+        secret =credentials('Ubuntu-ssh')
     }
     stages {
         stage('one') {
             steps{
                 sh "echo ${Name}"
+                echo "env"
             }
         }
         stage('two') {
@@ -29,6 +31,7 @@ pipeline {
             }
             steps {
                 sh "echo ${age}"
+                sh "echo ${secret}"
             }
         }
     }
