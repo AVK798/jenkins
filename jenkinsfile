@@ -18,6 +18,10 @@ pipeline {
         Name="AVK"
         /*secret=credentials('ubuntu-ssh')*/
     }
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'Minutes')
+    }
     stages {
         stage('one') {
             steps{
