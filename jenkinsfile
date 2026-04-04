@@ -39,9 +39,9 @@ pipeline {
         cron('H */4 * * 1-5')
         pollSCM('H */4 * * 1-5')
     }
-    tools {
-        maven 'Mvn-' 
-    }
+    // tools {
+    //     maven 'Mvn-' 
+    // }
     stages {
         stage('one') {
             input {
