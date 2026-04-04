@@ -53,7 +53,7 @@ pipeline {
                 sh "env"
             }
         }
-        parllel {
+        //parllel {
         stage('two') {
             environment {
                 Age=18
@@ -62,7 +62,7 @@ pipeline {
                 sh "echo ${age}"
                 /*sh "echo ${secret}"*/
             }
-        }
+        //}
     }
     }
 }
