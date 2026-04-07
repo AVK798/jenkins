@@ -1,13 +1,13 @@
 folder('Todo-App')
 
-['frontend'].each { app ->
+['frontend','login','todo','users'].each { app ->
     pipelineJob("Todo-App/${app}") {
         definition {
             cpsScm {
                 scm {
                     git {
                         remote {
-                            url("https://github.com/example/${app}.git")
+                            url("https://github.com/AVK798/${app}.git")
                         }
                         branch('main')
                     }
