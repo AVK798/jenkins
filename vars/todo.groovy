@@ -23,27 +23,27 @@ def call(Map params = [:]) {
 
      }
      stages {
-        stage ('Make artificats') {
+        // stage ('Make artificats') {
         
        
-        //    when {
-        //    environment name: 'App_type', value: 'Nginx'
+        // //    when {
+        // //    environment name: 'App_type', value: 'Nginx'
 
-        //    }
-          steps {
-                script {
+        // //    }
+        //   steps {
+        //         script {
 
-                 prepare = new group()
-                 prepare.Make_artifacts("${App_type}","${Service}")
-                }
-        //     sh '''
-        //       zip -r ${Service}.zip *
-        //      '''
-             }
-        }
+        //          prepare = new group()
+        //          prepare.Make_artifacts("${App_type}","${Service}")
+        //         }
+        // //     sh '''
+        // //       zip -r ${Service}.zip *
+        // //      '''
+        //      }
+        // }
         stage ('Download dependencies for - Golang') {
           when {
-            environment name: 'App_type', value: 'login' 
+            environment name: 'App_type', value: 'Go' 
          }
          steps {
             sh '''
@@ -53,20 +53,20 @@ def call(Map params = [:]) {
          }
         }
 
-        stage ('Make artifacts for Go-lang') {
-         when {
-            environment name: 'App_type', value: 'login' 
-         }
-         steps {
-            sh '''
-            zip -r ${Service}.zip ${Service}
+        // stage ('Make artifacts for Go-lang') {
+        //  when {
+        //     environment name: 'App_type', value: 'login' 
+        //  }
+        //  steps {
+        //     sh '''
+        //     zip -r ${Service}.zip ${Service}
 
-            '''
-         }
-        }
+        //     '''
+        //  }
+        // }
         stage ("Download Dependices for NodeJs") {
          when {
-                environment name: 'App_type', value: 'todo'
+                environment name: 'App_type', value: 'Nodejs'
             }
          steps {
 
@@ -75,16 +75,16 @@ def call(Map params = [:]) {
             '''
          }
         }
-        stage ('make artificats for todo') {
-            when {
-                environment name: 'App_type', value: 'todo'
-            }
-         steps {
-            sh '''
-            zip -r ${Service}.zip node_modules server.js
-            '''
-         }
-        }
+        // stage ('make artificats for todo') {
+        //     when {
+        //         environment name: 'App_type', value: 'todo'
+        //     }
+        //  steps {
+        //     sh '''
+        //     zip -r ${Service}.zip node_modules server.js
+        //     '''
+        //  }
+        // }
 
         stage ("mvn compile for JAVA") {
             when {
@@ -108,16 +108,25 @@ def call(Map params = [:]) {
                '''
              }
          }
-        stage ('make artificats for users') {
-             when {
-                environment name: 'App_type', value: 'users'
-            }
-         steps {
-            sh '''
-            cp target/*.jar ${Servcie}.jar
-            zip -r ${Service}.zip ${Service}.jar 
-            '''
-         }
+        // stage ('make artificats for users') {
+        //      when {
+        //         environment name: 'App_type', value: 'users'
+        //     }
+        //  steps {
+        //     sh '''
+        //     cp target/*.jar ${Servcie}.jar
+        //     zip -r ${Service}.zip ${Service}.jar 
+        //     '''
+        //  }
+        // }
+         stage ('Make artificats') {
+          steps {
+                script {
+
+                 prepare = new group()
+                 prepare.Make_artifacts("${App_type}","${Service}")
+                }
+             }
         }
         stage ('Upload the Artifact to Nexus') {
            steps {
