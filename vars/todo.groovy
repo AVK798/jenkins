@@ -36,7 +36,9 @@ def call(Map params = [:]) {
             }
         }
         stage ('Download dependencies for - Golang') {
-         
+          when {
+            environment name: 'App_type', value: 'login' 
+         }
          steps {
             sh '''
             go mod tidy
@@ -57,6 +59,9 @@ def call(Map params = [:]) {
          }
         }
         stage ("Download Dependices for NodeJs") {
+         when {
+                environment name: 'App_type', value: 'todo'
+            }
          steps {
 
             sh '''
