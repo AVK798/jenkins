@@ -56,6 +56,24 @@ def call(Map params = [:]) {
             '''
          }
         }
+        stage ("Download Dependices for NodeJs") {
+         steps {
+
+            sh '''
+              npm ci
+            '''
+         }
+        }
+        stage ('make artificats for todo') {
+            when {
+                environment name: 'App_type', value: 'todo'
+            }
+         steps {
+            sh '''
+            zip -r ${Service}.zip node_modules server.js
+            '''
+         }
+        }
         stage ('Upload the Artifact to Nexus') {
            steps {
             sh'''
