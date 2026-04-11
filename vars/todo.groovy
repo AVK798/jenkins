@@ -23,17 +23,23 @@ def call(Map params = [:]) {
 
      }
      stages {
-        stage ('Make artificats - Nginx') {
-           when {
-          
-           environment name: 'App_type', value: 'Nginx'
+        stage ('Make artificats') {
+        
+       
+        //    when {
+        //    environment name: 'App_type', value: 'Nginx'
 
-           }
-         steps {
-            sh '''
-              zip -r ${Service}.zip *
-             '''
-            }
+        //    }
+          steps {
+                script {
+
+                 thing = new common()
+                 thing.Make_artifacts("${App_type}","${Servcie}")
+                }
+        //     sh '''
+        //       zip -r ${Service}.zip *
+        //      '''
+             }
         }
         stage ('Download dependencies for - Golang') {
           when {
