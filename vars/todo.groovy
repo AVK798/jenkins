@@ -79,6 +79,40 @@ def call(Map params = [:]) {
             '''
          }
         }
+
+        stage ("mvn compile for JAVA") {
+            when {
+                environment name: 'App_type', value: 'users'
+            }
+            steps {
+               sh '''
+                 mvn compile
+               '''
+            }
+         }
+
+         stage("mvn package") {
+          when {
+                environment name: 'App_type', value: 'users'
+            }
+             steps {
+
+               sh '''
+                mvn package
+               '''
+             }
+         }
+        stage ('make artificats for users') {
+             when {
+                environment name: 'App_type', value: 'users'
+            }
+         steps {
+            sh '''
+            cp target/*.jar ${Servcie}.jar
+            zip -r ${Service}.zip ${Service}.jar 
+            '''
+         }
+        }
         stage ('Upload the Artifact to Nexus') {
            steps {
             sh'''
