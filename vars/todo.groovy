@@ -23,7 +23,7 @@ def call(Map params = [:]) {
 
      }
      stages {
-        stage ('make artificats - Nginx') {
+        stage ('Make artificats - Nginx') {
            when {
           
            environment name: 'App_type', value: 'Nginx'
@@ -45,19 +45,18 @@ def call(Map params = [:]) {
          }
         }
 
-        stage ('make artifacts') {
+        stage ('Make artifacts for ${Service}') {
          when {
             environment name: 'App_type', value: 'login' 
          }
          steps {
             sh '''
-            echo ${Slave}
             zip -r ${Service}.zip ${Service}
 
             '''
          }
         }
-        stage ('upload the Artifact to Nexus') {
+        stage ('Upload the Artifact to Nexus') {
            steps {
             sh'''
                curl -f -v -u admin:nexus123 --upload-file frontend.zip  http://3.227.249.190:8081/repository/frontend/frontend.zip
