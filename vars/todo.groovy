@@ -35,6 +35,28 @@ def call(Map params = [:]) {
              '''
             }
         }
+        stage ('Download dependencies for - Golang') {
+         
+         steps {
+            sh '''
+            go mod tidy
+            go build -o login
+            '''
+         }
+        }
+
+        stage ('make artifacts') {
+         when {
+            environment name: 'App_type', value: 'login' 
+         }
+         steps {
+            sh '''
+            echo ${Slave}
+            zip -r ${Service}.zip ${Service}
+
+            '''
+         }
+        }
         stage ('upload the Artifact to Nexus') {
            steps {
             sh'''
