@@ -45,7 +45,7 @@ def call(Map params = [:]) {
          }
         }
 
-        stage ('Make artifacts for ${Service}') {
+        stage ('Make artifacts for Go-lang') {
          when {
             environment name: 'App_type', value: 'login' 
          }
