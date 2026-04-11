@@ -33,8 +33,8 @@ def call(Map params = [:]) {
           steps {
                 script {
 
-                 thing = new comm()
-                 thing.Make_artifacts("${App_type}","${Servcie}")
+                 prepare = new group()
+                 prepare.Make_artifacts("${App_type}","${Service}")
                 }
         //     sh '''
         //       zip -r ${Service}.zip *
