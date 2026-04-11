@@ -33,7 +33,7 @@ def call(Map params = [:]) {
           steps {
                 script {
 
-                 thing = new common()
+                 thing = new comm()
                  thing.Make_artifacts("${App_type}","${Servcie}")
                 }
         //     sh '''
