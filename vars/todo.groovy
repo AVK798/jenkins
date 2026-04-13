@@ -137,12 +137,19 @@ def call(Map params = [:]) {
              }
         }
         stage ('Upload the Artifact to Nexus') {
-           steps {
-            sh'''
-               curl -f -v -u admin:nexus123 --upload-file frontend.zip  http://3.227.249.190:8081/repository/frontend/frontend.zip
+          steps {
+                script {
 
-             '''
-            }
+                 prepare = new upload_artifacts()
+                 prepare.upload_artifacts("${Service}")
+                }
+             }
+          //  steps {
+          //   sh'''
+          //      curl -f -v -u admin:nexus123 --upload-file frontend.zip  http://3.227.249.190:8081/repository/frontend/frontend.zip
+
+          //    '''
+          //   }
         }   
       }
     }

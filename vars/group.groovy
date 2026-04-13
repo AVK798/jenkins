@@ -33,5 +33,10 @@ def Code_builds(App_type, Service) {
             print excute
     }
 }
+def upload_artifacts(Service) {
+
+  curl -f -v -u admin:nexus123 --upload-file ${Service}.zip  http://172.31.72.40:8081/repository/${Service}/${Service}.zip
+
+}
 
 
