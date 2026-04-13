@@ -1,6 +1,6 @@
 def Make_artifacts(App_type, Service) {
     if(App_type == 'Nginx') {
-        command = 'zip -r ${FILENAME}.zip *'
+        command = ' echo $env && zip -r ${FILENAME}.zip *'
         def excute=sh(returnStdout: true, script: command)
             print excute
     } else if(App_type == 'Go') {
