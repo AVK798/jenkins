@@ -15,5 +15,9 @@ folder('Todo-App')
                 scriptPath('Jenkinsfile')
             }
         }
+          triggers {
+            githubPush()   // 👈 enables webhook trigger
+        }
     }
+  
 }
