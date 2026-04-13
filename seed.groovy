@@ -9,7 +9,7 @@ folder('Todo-App')
                         remote {
                             url("https://github.com/AVK798/${app}.git")
                         }
-                        branch('main')
+                        branches('*/main', 'refs/tags/*')
                     }
                 }
                 scriptPath('Jenkinsfile')
