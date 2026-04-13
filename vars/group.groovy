@@ -34,9 +34,12 @@ def Code_builds(App_type, Service) {
     }
 }
 def upload_artifacts(Service) {
+  get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
+  def get_branch_exec=sh(returnStdout: true, script: get_branch)
+  def FILENAME=Service+'-'+get_branch_exec+'.zip'
 
-  curl -f -v -u admin:nexus123 --upload-file ${Service}.zip  http://172.31.72.40:8081/repository/${Service}/${Service}.zip
-
+  command = "curl -f -v -u admin:nexus123 --upload-file ${FILENAME} http://172.31.72.40:8081/repository/${Service}/${FILENAME}"
+  def execute_state=sh(returnStdout: true, script: command)
+  //manager.addShortText("deployed")
 }
-
 
