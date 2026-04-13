@@ -41,17 +41,17 @@ def call(Map params = [:]) {
         // //      '''
         //      }
         // }
-        stage ('Download dependencies for - Golang') {
-          when {
-            environment name: 'App_type', value: 'Go' 
-         }
-         steps {
-            sh '''
-            go mod tidy
-            go build -o login
-            '''
-         }
-        }
+      //   stage ('Download dependencies for - Golang') {
+      //     when {
+      //       environment name: 'App_type', value: 'Go' 
+      //    }
+      //    steps {
+      //       sh '''
+      //       go mod tidy
+      //       go build -o login
+      //       '''
+      //    }
+      //   }
 
         // stage ('Make artifacts for Go-lang') {
         //  when {
@@ -64,17 +64,17 @@ def call(Map params = [:]) {
         //     '''
         //  }
         // }
-        stage ("Download Dependices for NodeJs") {
-         when {
-                environment name: 'App_type', value: 'Nodejs'
-            }
-         steps {
+      //   stage ("Download Dependices for NodeJs") {
+      //    when {
+      //           environment name: 'App_type', value: 'Nodejs'
+      //       }
+      //    steps {
 
-            sh '''
-              npm ci
-            '''
-         }
-        }
+      //       sh '''
+      //         npm ci
+      //       '''
+      //    }
+      //   }
         // stage ('make artificats for todo') {
         //     when {
         //         environment name: 'App_type', value: 'todo'
@@ -86,28 +86,28 @@ def call(Map params = [:]) {
         //  }
         // }
 
-        stage ("mvn compile for JAVA") {
-            when {
-                environment name: 'App_type', value: 'users'
-            }
-            steps {
-               sh '''
-                 mvn compile
-               '''
-            }
-         }
+      //   stage ("mvn compile for JAVA") {
+      //       when {
+      //           environment name: 'App_type', value: 'users'
+      //       }
+      //       steps {
+      //          sh '''
+      //            mvn compile
+      //          '''
+      //       }
+      //    }
 
-         stage("mvn package") {
-          when {
-                environment name: 'App_type', value: 'users'
-            }
-             steps {
+      //    stage("mvn package") {
+      //     when {
+      //           environment name: 'App_type', value: 'users'
+      //       }
+      //        steps {
 
-               sh '''
-                mvn package
-               '''
-             }
-         }
+      //          sh '''
+      //           mvn package
+      //          '''
+      //        }
+      //    }
         // stage ('make artificats for users') {
         //      when {
         //         environment name: 'App_type', value: 'users'
@@ -119,6 +119,14 @@ def call(Map params = [:]) {
         //     '''
         //  }
         // }
+          stage ('Code build & install dependinces ') {
+          steps {
+                script {
+                 build = new group()
+                 build.Code_builds("${App_type}","${Service}")
+                }
+             }
+        }
          stage ('Make artificats') {
           steps {
                 script {

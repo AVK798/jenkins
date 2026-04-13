@@ -16,7 +16,22 @@ def Make_artifacts(App_type, Service) {
         def excute=sh(returnStdout: true, script: command)
             print excute
     }
+}
 
+def Code_builds(App_type, Service) {
+    if(App_type == 'Go') {
+        command = 'go build -o login'
+        def excute=sh(returnStdout: true, script: command)
+            print excute
+    } else if(App_type == 'Nodejs') {
+        command = 'npm ci'
+        def excute=sh(returnStdout: true, script: command)
+            print excute
+    } else if(App_type == 'java') {
+        command = 'mvn clean package'
+        def excute=sh(returnStdout: true, script: command)
+            print excute
+    }
 }
 
 
