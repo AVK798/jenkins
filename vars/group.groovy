@@ -18,20 +18,20 @@ def Make_artifacts(App_type, Service) {
     }
 }
 
-def upload_artifacts(Service) {
-    def name = ""
-    if (env.TAG_NAME) {
-        name = env.TAG_NAME
-    } else {
-        name = env.BRANCH_NAME ?: "main"
-    }
-  //get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
-  def get_branch_exec=sh(returnStdout: true, script: name)
-  def FILENAME=Service+'-'+get_branch_exec+'.zip'
-   command = "curl -f -v -u admin:nexus123 --upload-file ${FILENAME} http://172.31.72.40:8081/repository/${Service}/${FILENAME}"
-   def execute_state=sh(returnStdout: true, script: command)
-  //manager.addShortText("deployed")
-}
+// def upload_artifacts(Service) {
+//     def name = ""
+//     if (env.TAG_NAME) {
+//         name = env.TAG_NAME
+//     } else {
+//         name = env.BRANCH_NAME ?: "main"
+//     }
+//   //get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
+//   def get_branch_exec=sh(returnStdout: true, script: name)
+//   def FILENAME=Service+'-'+get_branch_exec+'.zip'
+//    command = "curl -f -v -u admin:nexus123 --upload-file ${FILENAME} http://172.31.72.40:8081/repository/${Service}/${FILENAME}"
+//    def execute_state=sh(returnStdout: true, script: command)
+//   //manager.addShortText("deployed")
+// }
 
 // def upload_artifacts(Service) {
 //     def name = ""
