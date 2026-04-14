@@ -4,19 +4,19 @@ def Make_artifacts(App_type, Service) {
     println("abc${get_branch_exec}abc")
     def FILENAME=Service+'-'+get_branch_exec+'.zip'
     if(App_type == 'Nginx') {
-        command = ' echo env && zip -r ${FILENAME}.zip *'
+        def command = "zip -r ${FILENAME}.zip *"
         def excute=sh(returnStdout: true, script: command)
             print excute
     } else if(App_type == 'Go') {
-        command = 'zip -r ${FILENAME}.zip ${Service}'
+        def command = "zip -r ${FILENAME}.zip ${Service}"
         def excute=sh(returnStdout: true, script: command)
             print excute
     } else if(App_type == 'Nodejs') {
-        command = 'zip -r ${FILENAME}.zip node_modules server.js'
+        def command = "zip -r ${FILENAME}.zip node_modules server.js"
         def excute=sh(returnStdout: true, script: command)
             print excute
     } else if(App_type == 'Java') {
-        command = 'cp target/*.jar ${Servcie}.jar && zip -r ${FILENAME}.zip ${Service}.jar'
+        def command = "cp target/*.jar ${Servcie}.jar && zip -r ${FILENAME}.zip ${Service}.jar"
         def excute=sh(returnStdout: true, script: command)
             print excute
     }
