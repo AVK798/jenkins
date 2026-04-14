@@ -67,7 +67,7 @@ def Code_builds(App_type, Service) {
         command = 'npm ci'
         def excute=sh(returnStdout: true, script: command)
             print excute
-    } else if(App_type == 'java') {
+    } else if(App_type == 'Java') {
         command = 'mvn clean package'
         def excute=sh(returnStdout: true, script: command)
             print excute
