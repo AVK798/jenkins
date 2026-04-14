@@ -42,7 +42,7 @@ def upload_artifacts(Service) {
     }
     def FILENAME = "${Service}-${name}.zip"
     echo "Artifact Name: ${FILENAME}"
-    command = "curl -f -v -u admin:nexus123 --upload-file ${FILENAME} http://172.31.72.40:8081/repository/${Service}/${FILENAME}"
+    command = "curl -f -v -u admin:nexus123 --upload-file ${FILENAME} http://100.54.105.237:8081/repository/${Service}/${FILENAME}"
     def execute_state=sh(returnStdout: true, script: command)
 }
 
