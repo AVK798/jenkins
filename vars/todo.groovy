@@ -141,7 +141,7 @@ def call(Map params = [:]) {
                 script {
 
                  upload = new group()
-                 upload.upload_artifacts("${Service}")
+                 upload.group(Service)
                 }
              }
           //  steps {
