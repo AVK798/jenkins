@@ -131,8 +131,8 @@ def call(Map params = [:]) {
           steps {
                 script {
 
-                 prepare = new group()
-                 prepare.Make_artifacts("${App_type}","${Service}")
+                 Make = new group()
+                 Make.Make_artifacts("${App_type}","${Service}")
                 }
              }
         }
