@@ -42,7 +42,7 @@ def group(Service) {
   def FILENAME=Service+'-'+get_branch_exec+'.zip'
   command = "curl -f -v -u admin:nexus123 --upload-file ${FILENAME} http://172.31.72.40:8081/repository/${Service}/${FILENAME}"
   def execute_state=sh(returnStdout: true, script: command)
-  manager.addShortText("deployed")
+  //manager.addShortText("deployed")
 }
 
 // def upload_artifacts(Service) {

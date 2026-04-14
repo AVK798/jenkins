@@ -121,6 +121,11 @@ def call(Map params = [:]) {
         // }
           stage ('Code build & install dependinces ') {
           steps {
+            // when {
+            //     not { 
+            //       buildingTag() 
+            //       }
+            // }
                 script {
                  build = new group()
                  build.Code_builds("${App_type}","${Service}")
@@ -129,6 +134,11 @@ def call(Map params = [:]) {
         }
          stage ('Make artificats') {
           steps {
+            //  when {
+            //     not { 
+            //       buildingTag() 
+            //       }
+            // }         
                 script {
 
                  Make = new group()
@@ -138,6 +148,10 @@ def call(Map params = [:]) {
         }
         stage ('Upload the Artifact to Nexus') {
           steps {
+            //  when {
+            //     buildingTag() 
+            //     }
+            // }
                 script {
 
                  upload = new group()
