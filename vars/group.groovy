@@ -16,7 +16,7 @@ def Make_artifacts(App_type, Service) {
         def excute=sh(returnStdout: true, script: command)
             print excute
     } else if(App_type == 'Java') {
-        def command = "cp target/*.jar ${Servcie}.jar && zip -r ${FILENAME} ${Service}.jar"
+        def command = "cp target/*.jar ${Service}.jar && zip -r ${FILENAME} ${Service}.jar"
         def excute=sh(returnStdout: true, script: command)
             print excute
     }
@@ -68,7 +68,7 @@ def Code_builds(App_type, Service) {
         def excute=sh(returnStdout: true, script: command)
             print excute
     } else if(App_type == 'java') {
-        command = 'mvn compile && mvn package'
+        command = 'mvn clean package'
         def excute=sh(returnStdout: true, script: command)
             print excute
     }
