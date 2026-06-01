@@ -121,50 +121,15 @@ def call(Map params = [:]) {
         // }
           stage ('Docker build') {
           steps {
-            // when {
-            //     not { 
-            //       buildingTag() 
-            //       }
-            // }
-                script {
-                 build = new group()
-                 build.Code_builds("${App_type}","${Service}")
-                }
+                sh '''
+
+                 docker build -t local .
+
+                '''
              }
         }
-         stage ('Make artificats') {
-          steps {
-            //  when {
-            //     not { 
-            //       buildingTag() 
-            //       }
-            // }         
-                script {
-
-                 Make = new group()
-                 Make.Make_artifacts("${App_type}","${Service}")
-                }
-             }
-        }
-        stage ('Upload the Artifact to Nexus') {
-          steps {
-            //  when {
-            //     buildingTag() 
-            //     }
-            // }
-                script {
-
-                 upload = new group()
-                 upload.group(Service)
-                }
-             }
-          //  steps {
-          //   sh'''
-          //      curl -f -v -u admin:nexus123 --upload-file frontend.zip  http://3.227.249.190:8081/repository/frontend/frontend.zip
-
-          //    '''
-          //   }
-        }   
+         
+        
       }
     }
 }
