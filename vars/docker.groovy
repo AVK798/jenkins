@@ -123,6 +123,7 @@ def call(Map params = [:]) {
           steps {
                 sh '''
                   whoami
+                  echo $HOME
                   id
                   groups
                   ls -l /var/run/docker.sock
