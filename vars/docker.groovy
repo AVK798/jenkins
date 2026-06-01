@@ -1,7 +1,7 @@
 def call(Map params = [:]) {
   // Start Default Arguments
   def args = [
-          NEXUS_IP               : '172.31.14.124',
+          Slave               : 'DOCKER',
   ]
   args << params
 
@@ -18,7 +18,7 @@ def call(Map params = [:]) {
      environment {
 
       Service    = "${args.Service}"
-      //Slave      = "${args.Slave}"
+      Slave      = "${args.Slave}"
       App_type   = "${args.App_type}"
 
      }
