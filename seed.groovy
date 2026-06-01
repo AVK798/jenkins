@@ -13,7 +13,7 @@ folder('Todo-App')
                         branches('*/main', 'refs/tags/*')
                     }
                 }
-                scriptPath('Jenkinsfile')
+                scriptPath('Jenkinsfile-Docker')
             }
         }
 
