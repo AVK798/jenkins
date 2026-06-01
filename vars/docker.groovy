@@ -122,8 +122,12 @@ def call(Map params = [:]) {
           stage ('Docker build') {
           steps {
                 sh '''
-
-                 docker build -t local .
+                  whoami
+                  id
+                  groups
+                  ls -l /var/run/docker.sock
+                  docker ps
+                  docker build -t local .
 
                 '''
              }
