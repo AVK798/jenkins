@@ -128,6 +128,14 @@ def call(Map params = [:]) {
                   groups
                   ls -l /var/run/docker.sock
                   docker ps
+                  echo "=== AWS Config ==="
+
+                  aws configure list
+
+                  echo "=== AWS Identity ==="
+
+                  aws sts get-caller-identity
+
                   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400138960249.dkr.ecr.us-east-1.amazonaws.com
                   docker build -t 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Service}:latest .
 
