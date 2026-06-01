@@ -127,6 +127,9 @@ def call(Map params = [:]) {
                   id
                   groups
                   ls -l /var/run/docker.sock
+                  
+                  ls -la /home/ubuntu/.aws
+
                   docker ps
                   echo "=== AWS Config ==="
 
