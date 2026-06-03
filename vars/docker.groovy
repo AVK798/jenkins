@@ -149,7 +149,7 @@ def call(Map params = [:]) {
           steps {
                 sh '''
                   
-                 docker push 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Servcie}:latest
+                 docker push 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Service}:latest
                 '''
              }
         }
