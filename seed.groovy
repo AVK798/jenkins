@@ -1,4 +1,4 @@
-folder('Todo-App-K8S')
+
 
 // ['frontend','login','todo','users'].each { app ->
 //     pipelineJob("Todo-App/${app}") {
@@ -23,7 +23,7 @@ folder('Todo-App-K8S')
 //         }
 //     }
 // }
-
+folder('Todo-App-K8S')
 ['frontend','login','todo','users'].each { app ->
     pipelineJob("Todo-App/${app}") {
         definition {
