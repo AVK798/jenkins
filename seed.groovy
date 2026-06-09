@@ -1,5 +1,5 @@
 folder('TodoApp')
-['frontend','login','todo','users'].each { app ->
+['frontend','login','todo','users','redis'].each { app ->
     pipelineJob("TodoApp/${app}") {
         definition {
             cpsScm {
@@ -23,7 +23,7 @@ folder('TodoApp')
     }
 }
 folder('TodoApp-K8S')
-['frontend','login','todo','users'].each { app ->
+['frontend','login','todo','users','redis'].each { app ->
     pipelineJob("TodoApp-K8S/${app}") {
         definition {
             cpsScm {
