@@ -140,7 +140,7 @@ def call(Map params = [:]) {
                   aws sts get-caller-identity
 
                   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 400138960249.dkr.ecr.us-east-1.amazonaws.com
-                  docker build -t 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Service}:0.0.1 .
+                  docker build -t 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Service}:0.0.2 .
 
                 '''
              }
@@ -149,7 +149,7 @@ def call(Map params = [:]) {
           steps {
                 sh '''
                   
-                 docker push 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Service}:0.0.1
+                 docker push 400138960249.dkr.ecr.us-east-1.amazonaws.com/${Service}:0.0.2
                 '''
              }
         }
